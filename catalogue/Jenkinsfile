@@ -1,15 +1,16 @@
-@Library('jenkins-shared-library') _ //get the global pipeline libraries in system config
+@Library('roboshop-jenkins-shared-library') _ //get the global pipeline libraries in system config
 
 // create variable of map type and set the values
 
 def configMap = [
-    type: "nodejsEKS",
+    //type: "nodejsEKS",
     component: "catalogue",
     project: "roboshop"
 ]
 echo "test:"
 if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){ // true, if branch is feature branch
-    pipelineDecission.decidePipeline(configMap)
+    //pipelineDecission.decidePipeline(configMap)
+    nodeJSEKSPipeline_dev(configMap)
 }
 else{
     echo "Proceed with CR or NON-PROD pipeline"
